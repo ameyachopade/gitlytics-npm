@@ -16,7 +16,9 @@
 
 The JavaScript/TypeScript companion to PyPI [`gitlytics`](https://pypi.org/project/gitlytics/) - 100% CSV-vault compatible, zero runtime dependencies.
 
-[**Explore Live Dashboard**](https://dashboard.gitlytics.dev) • [**Read the Docs**](https://docs.gitlytics.dev) • [**Agent Skills (skills.sh)**](https://skills.sh/ameyachopade/gitlytics-plugin) • [**PyPI Package**](https://pypi.org/project/gitlytics/)
+[![PyPI](https://api.gitlytics.dev/api/badge/pypi/gitlytics.svg?label=PyPI&theme=gitlytics-dark&variant=clay)](https://pypi.org/project/gitlytics/)
+[![MCP](https://api.gitlytics.dev/api/badge/static.svg?label=MCP&message=OAuth%202.1%20%2B%20Stdio&theme=gitlytics-dark&variant=clay)](https://docs.gitlytics.dev/mcp)
+[![Blog](https://api.gitlytics.dev/api/badge/static.svg?label=Blog&message=blog.gitlytics.dev&color=f59e0b&theme=gitlytics-dark&variant=clay)](https://blog.gitlytics.dev)
 
 </div>
 
