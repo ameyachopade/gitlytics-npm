@@ -7,7 +7,7 @@
 ### Zero-Dependency GitHub Traffic Analytics CLI, JS/TS SDK, Dual-Mode MCP Server & Local Dashboard
 
 [![Node](https://api.gitlytics.dev/api/badge/tech.svg?slug=nodedotjs&style=icon_label_value&label=Node&value=18%2B&theme=gitlytics-dark&variant=clay)](https://nodejs.org/)
-[![License](https://api.gitlytics.dev/api/badge/static.svg?label=License&message=Apache%202.0&color=3b82f6&theme=gitlytics-dark&variant=clay)](LICENSE)
+[![License](https://api.gitlytics.dev/api/badge/static.svg?label=License&message=Apache%202.0%20%2B%20Commons%20Clause&color=3b82f6&theme=gitlytics-dark&variant=clay)](LICENSE)
 [![Live Dashboard](https://api.gitlytics.dev/api/badge/static.svg?label=Studio&message=dashboard.gitlytics.dev&color=818cf8&theme=gitlytics-dark&variant=clay)](https://dashboard.gitlytics.dev)
 [![Documentation](https://api.gitlytics.dev/api/badge/static.svg?label=Docs&message=docs.gitlytics.dev&color=10b981&theme=gitlytics-dark&variant=clay)](https://docs.gitlytics.dev)
 [![Agent Skills](https://api.gitlytics.dev/api/badge/tech.svg?slug=vercel&style=icon_label_value&label=skills.sh&value=4%20Agent%20Skills&theme=gitlytics-dark&variant=clay)](https://skills.sh/ameyachopade/gitlytics-plugin)
@@ -90,4 +90,4 @@ const badge = buildWidgetEmbed({ kind: "tech_badge", slug: "typescript", style: 
 
 - **Contributing**: See [`CONTRIBUTING.md`](CONTRIBUTING.md).
 - **Security**: See [`SECURITY.md`](SECURITY.md).
-- **License**: Licensed under the [Apache License 2.0](LICENSE).
+- **License**: Licensed under the **Apache License 2.0 + Commons Clause v1.0**. See [`LICENSE`](LICENSE) for full details.

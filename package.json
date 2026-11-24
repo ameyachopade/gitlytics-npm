@@ -2,7 +2,7 @@
   "name": "@gitlytics/cli",
   "version": "0.9.0",
   "description": "Zero-dependency GitHub traffic analytics CLI, JS/TS SDK, dual-mode MCP server, and local dashboard for Gitlytics",
-  "license": "Apache-2.0",
+  "license": "SEE LICENSE IN LICENSE",
   "type": "module",
   "main": "./src/index.js",
   "types": "./types/index.d.ts",
