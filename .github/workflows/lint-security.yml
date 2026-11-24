@@ -1,0 +1,51 @@
+name: Lint & Security
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  lint-security:
+    name: Syntax, Zero-Dep & Security Audit
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
+        with:
+          node-version: "22"
+
+      - name: Syntax check all JS/MJS modules
+        run: |
+          for f in bin/*.js src/*.js src/*/*.js test/*.mjs; do
+            node --check "$f"
+          done
+
+      - name: Verify zero runtime dependencies and no leaked secrets
+        run: |
+          node -e '
+            const fs = require("node:fs");
+            const pkg = JSON.parse(fs.readFileSync("package.json", "utf8"));
+            if (pkg.dependencies && Object.keys(pkg.dependencies).length > 0) {
+              throw new Error("Expected zero runtime dependencies");
+            }
+            const secretRe = /\b(ghp_[A-Za-z0-9]{20,}|github_pat_[A-Za-z0-9_]{20,}|glt_live_[A-Za-z0-9_-]{20,})\b/;
+            for (const dir of ["bin", "src", "types"]) {
+              for (const entry of fs.readdirSync(dir, { recursive: true, withFileTypes: true })) {
+                if (!entry.isFile()) continue;
+                const full = `${entry.parentPath || entry.path}/${entry.name}`;
+                const content = fs.readFileSync(full, "utf8");
+                if (secretRe.test(content)) throw new Error(`Secret pattern found in ${full}`);
+              }
+            }
+            console.log("Lint & security checks passed.");
+          '
