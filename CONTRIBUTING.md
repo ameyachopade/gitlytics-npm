@@ -37,7 +37,7 @@ Thank you for contributing to the **Gitlytics Ecosystem**. This package provides
 | Project | Role | Link |
 | :--- | :--- | :--- |
 | [gitlytics](https://github.com/ameyachopade/gitlytics) | Core Python library, CLI, local stdio MCP & local dashboard | [PyPI](https://pypi.org/project/gitlytics) |
-| **`@gitlytics/cli`** *(this package)* | Zero-dependency Node.js CLI, JS/TS SDK, dual-mode MCP & local dashboard | [npm](https://www.npmjs.com/package/@gitlytics/cli) |
+| **[gitlytics-npm](https://github.com/ameyachopade/gitlytics-npm)** *(this package)* | Zero-dependency Node.js CLI, JS/TS SDK, dual-mode MCP & local dashboard | [npm (`@gitlytics/cli`)](https://www.npmjs.com/package/@gitlytics/cli) |
 | [gitlytics-plugin](https://github.com/ameyachopade/gitlytics-plugin) | Official Antigravity plugin, MCP config & 4 `npx skills` | [skills.sh](https://skills.sh/ameyachopade/gitlytics-plugin) |
 | [gitlytics-github-traffic-automation](https://github.com/ameyachopade/gitlytics-github-traffic-automation) | Composite GitHub Action for automated CSV backups | [GitHub Action](https://github.com/ameyachopade/gitlytics-github-traffic-automation) |
 | [gitlytics-metadata-pages](https://github.com/ameyachopade/gitlytics-metadata-pages) | Homepage, Docs Hub & Engineering Blog | [gitlytics.dev](https://gitlytics.dev) / [docs.gitlytics.dev](https://docs.gitlytics.dev) |

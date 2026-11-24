@@ -13,17 +13,15 @@
     }
   },
   "bin": {
-    "gitlytics": "./bin/gitlytics.js"
+    "gitlytics": "bin/gitlytics.js"
   },
   "engines": {
     "node": ">=18.0.0"
   },
   "files": [
-    "assets/",
     "bin/",
     "src/",
     "types/",
-    "static/",
     "README.md",
     "LICENSE"
   ],
@@ -43,7 +41,7 @@
   "homepage": "https://gitlytics.dev",
   "repository": {
     "type": "git",
-    "url": "https://github.com/ameyachopade/gitlytics.git"
+    "url": "git+https://github.com/ameyachopade/gitlytics-npm.git"
   },
   "bugs": {
     "url": "https://github.com/ameyachopade/gitlytics/issues"
