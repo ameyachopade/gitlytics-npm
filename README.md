@@ -6,6 +6,7 @@
 
 ### Zero-Dependency GitHub Traffic Analytics CLI, JS/TS SDK, Dual-Mode MCP Server & Local Dashboard
 
+[![npm version](https://api.gitlytics.dev/api/badge/npm/@gitlytics/cli.svg?label=npm&color=cb3837&theme=gitlytics-dark&variant=clay)](https://www.npmjs.com/package/@gitlytics/cli)
 [![Node](https://api.gitlytics.dev/api/badge/tech.svg?slug=nodedotjs&style=icon_label_value&label=Node&value=18%2B&theme=gitlytics-dark&variant=clay)](https://nodejs.org/)
 [![License](https://api.gitlytics.dev/api/badge/static.svg?label=License&message=Apache%202.0%20%2B%20Commons%20Clause&color=3b82f6&theme=gitlytics-dark&variant=clay)](LICENSE)
 [![Live Dashboard](https://api.gitlytics.dev/api/badge/static.svg?label=Studio&message=dashboard.gitlytics.dev&color=818cf8&theme=gitlytics-dark&variant=clay)](https://dashboard.gitlytics.dev)
