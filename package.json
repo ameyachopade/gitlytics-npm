@@ -1,0 +1,50 @@
+{
+  "name": "@gitlytics/cli",
+  "version": "0.9.0",
+  "description": "Zero-dependency GitHub traffic analytics CLI, JS/TS SDK, dual-mode MCP server, and local dashboard for Gitlytics",
+  "license": "Apache-2.0",
+  "type": "module",
+  "main": "./src/index.js",
+  "types": "./types/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./types/index.d.ts",
+      "import": "./src/index.js"
+    }
+  },
+  "bin": {
+    "gitlytics": "./bin/gitlytics.js"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "files": [
+    "bin/",
+    "src/",
+    "types/",
+    "static/",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "test": "node --test test/*.test.mjs"
+  },
+  "keywords": [
+    "gitlytics",
+    "github-traffic",
+    "github-analytics",
+    "mcp",
+    "model-context-protocol",
+    "readme-badges",
+    "cli",
+    "sdk"
+  ],
+  "homepage": "https://gitlytics.dev",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ameyachopade/gitlytics.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ameyachopade/gitlytics/issues"
+  }
+}
