@@ -6,20 +6,28 @@
 
 ### Zero-Dependency GitHub Traffic Analytics CLI, JS/TS SDK, Dual-Mode MCP Server & Local Dashboard
 
-[![npm version](https://api.gitlytics.dev/api/badge/npm/@gitlytics/cli.svg?label=npm&color=cb3837&theme=gitlytics-dark&variant=clay)](https://www.npmjs.com/package/@gitlytics/cli)
 [![Node](https://api.gitlytics.dev/api/badge/tech.svg?slug=nodedotjs&style=icon_label_value&label=Node&value=18%2B&theme=gitlytics-dark&variant=clay)](https://nodejs.org/)
-[![License](https://api.gitlytics.dev/api/badge/static.svg?label=License&message=Apache%202.0%20%2B%20Commons%20Clause&color=3b82f6&theme=gitlytics-dark&variant=clay)](LICENSE)
-[![Live Dashboard](https://api.gitlytics.dev/api/badge/static.svg?label=Studio&message=dashboard.gitlytics.dev&color=818cf8&theme=gitlytics-dark&variant=clay)](https://dashboard.gitlytics.dev)
-[![Documentation](https://api.gitlytics.dev/api/badge/static.svg?label=Docs&message=docs.gitlytics.dev&color=10b981&theme=gitlytics-dark&variant=clay)](https://docs.gitlytics.dev)
-[![Agent Skills](https://api.gitlytics.dev/api/badge/tech.svg?slug=vercel&style=icon_label_value&label=skills.sh&value=4%20Agent%20Skills&theme=gitlytics-dark&variant=clay)](https://skills.sh/ameyachopade/gitlytics-plugin)
+[![TypeScript](https://api.gitlytics.dev/api/badge/tech.svg?slug=typescript&style=icon_label_value&label=Types&value=Included&theme=gitlytics-dark&variant=clay)](https://www.typescriptlang.org/)
 
 <br/>
 
 The JavaScript/TypeScript companion to PyPI [`gitlytics`](https://pypi.org/project/gitlytics/) - 100% CSV-vault compatible, zero runtime dependencies.
 
-[![PyPI](https://api.gitlytics.dev/api/badge/pypi/gitlytics.svg?label=PyPI&theme=gitlytics-dark&variant=clay)](https://pypi.org/project/gitlytics/)
-[![MCP](https://api.gitlytics.dev/api/badge/static.svg?label=MCP&message=OAuth%202.1%20%2B%20Stdio&theme=gitlytics-dark&variant=clay)](https://docs.gitlytics.dev/mcp)
-[![Blog](https://api.gitlytics.dev/api/badge/static.svg?label=Blog&message=blog.gitlytics.dev&color=f59e0b&theme=gitlytics-dark&variant=clay)](https://blog.gitlytics.dev)
+<!-- GITLYTICS:ECOSYSTEM_BADGES:START -->
+[![PyPI](https://api.gitlytics.dev/api/badge/pypi/gitlytics.svg?label=PyPI&color=E25A1C&theme=gitlytics-dark&variant=clay)](https://pypi.org/project/gitlytics/)
+[![npm](https://api.gitlytics.dev/api/badge/npm/@gitlytics/cli.svg?label=npm&color=E25A1C&theme=gitlytics-dark&variant=clay)](https://www.npmjs.com/package/@gitlytics/cli)
+[![License](https://api.gitlytics.dev/api/badge/static.svg?label=License&message=Apache+2.0+%2B+CC&color=334155&theme=gitlytics-dark&variant=clay)](LICENSE)
+[![Agent Skills](https://api.gitlytics.dev/api/badge/skills/ameyachopade/gitlytics-plugin.svg?label=skills.sh&color=334155&theme=gitlytics-dark&variant=clay)](https://skills.sh/ameyachopade/gitlytics-plugin)
+[![MCP](https://api.gitlytics.dev/api/badge/static.svg?label=MCP&message=OAuth+2.1&color=E25A1C&theme=gitlytics-dark&variant=clay)](https://docs.gitlytics.dev/mcp)
+
+<br/>
+
+[![Home](https://api.gitlytics.dev/api/badge/static.svg?label=Site&message=gitlytics.dev&color=334155&theme=gitlytics-dark&variant=clay)](https://gitlytics.dev)
+[![Dashboard](https://api.gitlytics.dev/api/badge/static.svg?label=App&message=dashboard.gitlytics.dev&color=334155&theme=gitlytics-dark&variant=clay)](https://dashboard.gitlytics.dev)
+[![Widgets](https://api.gitlytics.dev/api/badge/static.svg?label=Widgets&message=widgets.gitlytics.dev&color=334155&theme=gitlytics-dark&variant=clay)](https://widgets.gitlytics.dev)
+[![Docs](https://api.gitlytics.dev/api/badge/static.svg?label=Docs&message=docs.gitlytics.dev&color=334155&theme=gitlytics-dark&variant=clay)](https://docs.gitlytics.dev)
+[![Blog](https://api.gitlytics.dev/api/badge/static.svg?label=Blog&message=blog.gitlytics.dev&color=334155&theme=gitlytics-dark&variant=clay)](https://blog.gitlytics.dev)
+<!-- GITLYTICS:ECOSYSTEM_BADGES:END -->
 
 </div>
 
