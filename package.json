@@ -1,7 +1,7 @@
 {
   "name": "@gitlytics/cli",
   "version": "0.9.1",
-  "description": "Zero-dependency GitHub traffic analytics CLI, JS/TS SDK, dual-mode MCP server, and local dashboard for Gitlytics",
+  "description": "Zero-dependency Git Intelligence CLI, pure-Git local analyzer, JS/TS SDK, dual-mode MCP server, and local dashboard for Gitlytics",
   "license": "SEE LICENSE IN LICENSE",
   "type": "module",
   "main": "./src/index.js",
@@ -21,6 +21,7 @@
   "files": [
     "bin/",
     "src/",
+    "static/",
     "types/",
     "README.md",
     "LICENSE"

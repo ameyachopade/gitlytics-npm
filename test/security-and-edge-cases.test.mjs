@@ -178,9 +178,13 @@ test("local dashboard HTTP server serves health, traffic vault, HTML fallback, a
     assert.equal(rTraffic.status, 200);
     assert.equal(JSON.parse(rTraffic.text).summary.total_views, 44);
 
+    const rVault = await invokeServer(server, { method: "GET", url: "/api/local/vault" });
+    assert.equal(rVault.status, 200);
+    assert.equal(JSON.parse(rVault.text).summary.total_views, 44);
+
     const rHtml = await invokeServer(server, { method: "GET", url: "/" });
     assert.equal(rHtml.status, 200);
-    assert.ok(rHtml.text.includes("Gitlytics Local Vault"));
+    assert.ok(rHtml.text.includes("Gitlytics"));
 
     const r404 = await invokeServer(server, { method: "DELETE", url: "/nope" });
     assert.equal(r404.status, 404);

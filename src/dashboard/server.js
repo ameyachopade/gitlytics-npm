@@ -12,6 +12,7 @@ import http from "node:http";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { queryCsvVault } from "../csv-vault.js";
+import { analyzeLocalRepo } from "../local-git.js";
 import { isLoopbackHost } from "../validation.js";
 import { VERSION } from "../version.js";
 
@@ -102,6 +103,17 @@ function renderFallbackHtml(dataDir) {
 </html>`;
 }
 
+function isAllowedLocalOrigin(req) {
+  const origin = req.headers.origin;
+  if (!origin) return true;
+  try {
+    const parsed = new URL(origin);
+    return isLoopbackHost(parsed.hostname);
+  } catch {
+    return false;
+  }
+}
+
 export function createDashboardServer({
   dataDir = "./data",
   host = "127.0.0.1",
@@ -120,6 +132,51 @@ export function createDashboardServer({
 
     if (req.method === "GET" && pathname === "/api/health") {
       return sendJson(res, 200, { status: "ok", version: VERSION, mode: "local-node" });
+    }
+
+    if (req.method === "GET" && pathname === "/api/config") {
+      return sendJson(res, 200, {
+        has_token: Boolean(!publicBind && (process.env.GITLYTICS_TOKEN || process.env.GITHUB_TOKEN)),
+        has_data_dir: Boolean(dataDir),
+        mode: "local-node",
+      });
+    }
+
+    if (req.method === "GET" && pathname === "/api/local/vault") {
+      if (!isAllowedLocalOrigin(req)) {
+        return sendJson(res, 403, { detail: "Cross-origin access forbidden." });
+      }
+      const vault = queryCsvVault({ dataDir, days: 365 });
+      return sendJson(res, 200, {
+        data_dir: dataDir,
+        repositories: vault.repositories || [],
+        summary: vault.summary || {
+          total_views: 0,
+          total_unique_visitors: 0,
+          total_clones: 0,
+          total_unique_cloners: 0,
+        },
+        traffic: [],
+      });
+    }
+
+    if (req.method === "POST" && pathname === "/api/local/analyze") {
+      if (!isAllowedLocalOrigin(req)) {
+        return sendJson(res, 403, { detail: "Cross-origin access forbidden." });
+      }
+      try {
+        const raw = await readBody(req);
+        const body = raw.trim() ? JSON.parse(raw) : {};
+        const allowedRoot = path.resolve(process.env.GITLYTICS_ANALYZE_ROOT || process.cwd());
+        const report = analyzeLocalRepo({
+          repoPath: body.path || ".",
+          days: Number(body.days ?? 90),
+          allowedRoot,
+        });
+        return sendJson(res, 200, report);
+      } catch (err) {
+        return sendJson(res, err.statusCode || 400, { detail: err instanceof Error ? err.message : String(err) });
+      }
     }
 
     if (req.method === "POST" && pathname === "/api/traffic") {
@@ -147,7 +204,7 @@ export function createDashboardServer({
             ...SECURITY_HEADERS,
             "Content-Type": MIME_TYPES[ext] || "application/octet-stream",
           });
-          fs.createReadStream(candidate).pipe(res);
+          res.end(fs.readFileSync(candidate));
           return;
         }
       }

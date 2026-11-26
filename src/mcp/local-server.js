@@ -9,8 +9,10 @@
  */
 
 import readline from "node:readline";
+import path from "node:path";
 import { mergeAndWriteVault, queryCsvVault } from "../csv-vault.js";
 import { fetchStarHistory, fetchTraffic } from "../github.js";
+import { analyzeLocalRepo } from "../local-git.js";
 import { resolveContainedPath, validateOwnerRepo } from "../validation.js";
 import { VERSION } from "../version.js";
 import { buildWidgetEmbed } from "../widgets.js";
@@ -64,6 +66,18 @@ export const LOCAL_TOOLS = [
         repo: { type: "string" },
       },
       required: ["owner", "repo"],
+      additionalProperties: false,
+    },
+  },
+  {
+    name: "analyze_local_repo",
+    description: "Run pure-Git local analysis (commit velocity, contributors, bus factor, churn hotspots, and agent prompt) offline.",
+    inputSchema: {
+      type: "object",
+      properties: {
+        path: { type: "string", default: ".", description: "Local Git repository path (default current directory)." },
+        days: { type: "integer", minimum: 1, maximum: 3650, default: 90 },
+      },
       additionalProperties: false,
     },
   },
@@ -213,6 +227,15 @@ export async function handleLocalJsonRpcMessage(msg, { dataDir = "./data", env =
             points,
           }),
         };
+      }
+
+      if (name === "analyze_local_repo") {
+        const report = analyzeLocalRepo({
+          repoPath: args.path || ".",
+          days: Number(args.days ?? 90),
+          allowedRoot: path.resolve(process.cwd()),
+        });
+        return { jsonrpc: "2.0", id: reqId, result: toolResponse(report) };
       }
 
       if (name === "local_build_widget_embed") {

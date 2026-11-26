@@ -11,6 +11,7 @@ import { serializeCsvRows, writeFileAtomically } from "../src/csv-vault.js";
 import { serveDashboard } from "../src/dashboard/server.js";
 import { fetchStarHistory, fetchTraffic } from "../src/github.js";
 import { sync } from "../src/index.js";
+import { analyzeLocalRepo } from "../src/local-git.js";
 import { runCloudMcpBridge } from "../src/mcp/cloud-bridge.js";
 import { runLocalMcpServer } from "../src/mcp/local-server.js";
 import { validateOwnerRepo } from "../src/validation.js";
@@ -18,8 +19,9 @@ import { DEFAULT_MCP_URL, VERSION } from "../src/version.js";
 
 function printHelp() {
   process.stderr.write(
-    `gitlytics v${VERSION} - GitHub Traffic Analytics CLI, SDK & MCP Server\n\n` +
+    `gitlytics v${VERSION} - Git Intelligence CLI, SDK & MCP Server\n\n` +
       `Usage:\n` +
+      `  gitlytics analyze   [path] [--days 90] [--json]\n` +
       `  gitlytics fetch     [--token TOKEN] [--repo-name owner/repo] [--return-format timeseries|summary] [--save-file FILE]\n` +
       `  gitlytics sync      [--token TOKEN] [--repo-name owner/repo] [--data-dir ./data] [--output-mode monthly|yearly] [--public-only] [--export-json FILE]\n` +
       `  gitlytics stars     <owner/repo> [--token TOKEN] [--json]\n` +
@@ -50,6 +52,41 @@ export async function runCli(argv = process.argv.slice(2)) {
 
   const command = argv[0];
   const rest = argv.slice(1);
+
+  if (command === "analyze") {
+    const { values, positionals } = parseArgs({
+      args: rest,
+      options: {
+        days: { type: "string", default: "90" },
+        json: { type: "boolean", default: false },
+      },
+      allowPositionals: true,
+    });
+    const repoPath = positionals[0] || ".";
+    const report = analyzeLocalRepo({ repoPath, days: Number(values.days || 90) });
+    if (values.json) {
+      process.stdout.write(`${JSON.stringify(report, null, 2)}\n`);
+    } else {
+      process.stdout.write(
+        `\nGitlytics Local Git Intelligence - ${report.repo_name} (${report.branch})\n` +
+          `Window: ${report.days}d | Commits: ${report.total_commits} (${report.commits_per_week}/wk) | Authors: ${report.active_authors} | Bus Factor: ${report.bus_factor}\n`,
+      );
+      if (report.top_authors.length > 0) {
+        process.stdout.write("\nTop Contributors:\n");
+        for (const a of report.top_authors.slice(0, 5)) {
+          process.stdout.write(`  - ${a.author}: ${a.commits} commits (${a.share_pct}%)\n`);
+        }
+      }
+      if (report.hotspots.length > 0) {
+        process.stdout.write("\nTop Churn Hotspots:\n");
+        for (const h of report.hotspots.slice(0, 8)) {
+          process.stdout.write(`  - ${h.file}: ${h.touches} touches\n`);
+        }
+      }
+      process.stdout.write(`\nAgent Prompt:\n${report.agent_prompt}\n\n`);
+    }
+    return 0;
+  }
 
   if (command === "fetch") {
     const { values } = parseArgs({

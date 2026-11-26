@@ -4,14 +4,14 @@
 
 # `@gitlytics/cli`
 
-### Zero-Dependency GitHub Traffic Analytics CLI, JS/TS SDK, Dual-Mode MCP Server & Local Dashboard
+### Zero-Dependency Git Intelligence CLI, Pure-Git Analyzer, JS/TS SDK, Dual-Mode MCP & Local Dashboard
 
 [![Node](https://api.gitlytics.dev/api/badge/tech.svg?slug=nodedotjs&style=icon_label_value&label=Node&value=18%2B&theme=gitlytics-dark&variant=clay)](https://nodejs.org/)
 [![TypeScript](https://api.gitlytics.dev/api/badge/tech.svg?slug=typescript&style=icon_label_value&label=Types&value=Included&theme=gitlytics-dark&variant=clay)](https://www.typescriptlang.org/)
 
 <br/>
 
-The JavaScript/TypeScript companion to PyPI [`gitlytics`](https://pypi.org/project/gitlytics/) - 100% CSV-vault compatible, zero runtime dependencies.
+The JavaScript/TypeScript companion to PyPI [`gitlytics`](https://pypi.org/project/gitlytics/) - 100% CSV-vault compatible, pure-Git offline analyzer (`npx @gitlytics/cli analyze .`), bundled Local Vault dashboard, and zero runtime dependencies.
 
 <!-- GITLYTICS:ECOSYSTEM_BADGES:START -->
 [![PyPI](https://api.gitlytics.dev/api/badge/pypi/gitlytics.svg?label=PyPI&color=E25A1C&theme=gitlytics-dark&variant=clay)](https://pypi.org/project/gitlytics/)

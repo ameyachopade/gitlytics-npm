@@ -1,5 +1,6 @@
 import { exportVaultToJson, mergeAndWriteVault, queryCsvVault } from "./csv-vault.js";
 import { fetchStarHistory, fetchTraffic } from "./github.js";
+import { analyzeLocalRepo } from "./local-git.js";
 import { serveDashboard } from "./dashboard/server.js";
 import { buildWidgetEmbed } from "./widgets.js";
 import { VERSION } from "./version.js";
@@ -16,6 +17,7 @@ export {
 
 export {
   VERSION as version,
+  analyzeLocalRepo,
   buildWidgetEmbed,
   exportVaultToJson,
   fetchStarHistory,
